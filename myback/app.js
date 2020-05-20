@@ -62,13 +62,6 @@ app.get('/add',(req,res)=>{
 
 //分类添加-提交页面
 app.post('/doAdd', (req, res) => {
-    //因为提交的内容有文本+文件，所以需要借助插件multiparty
-    // 1.form表单提交时，要修改提交的类型enctype="multipart/form-data" 
-    // 2.初始化multiparty,并接受相关参数
-    // 2.1配置默认上传文件缓存的路径uploadDir :'upload'  
-    // 2.2搭配express框架配置静态资源目录
-    //   3.form.parse表单数据解析，根据提交的信息获取有效值
-    //   3.1 err:报错 fields:文本域 files:文件域
     var form = new multiparty.Form({ uploadDir: 'upload/types' })
     form.parse(req, (err, fields, files) => {
       console.log(fields, '文本域')
